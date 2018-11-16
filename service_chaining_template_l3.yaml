@@ -371,7 +371,7 @@ resources:
       user_data_format: RAW
       config_drive: true
       user_data:
-        get_file: http://10.193.86.75/bts.tgz
+        get_file: {get_param: bts_url }
   
 
   left_VM_VirtualMachineInterface:
