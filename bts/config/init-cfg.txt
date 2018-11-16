@@ -1,7 +1,7 @@
 type=dhcp-client
 hostname=PAN_NGFW_SVM
 vm-auth-key=066369214657189
-panorama-server=172.16.100.4
+panorama-server=10.193.86.168
 tplname=Tenant1-Template-Stack
 dgname=Tenant1-DG
 dns-primary=8.8.8.8
