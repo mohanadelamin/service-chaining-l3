@@ -27,7 +27,7 @@ software/
 content/
 ```
 
-4. Upload the bts package to a web server, then update the URL on the environment file.
+4. Upload the bts package to a web server, then update the template file with the URL on the get_file function.
 5. Finally, deploy the stack using the following command:
 ```bash
 # openstack stack create -e ./service_chaining_env_l3.yaml -t service_chaining_template_l3.yaml stack1

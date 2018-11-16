@@ -46,5 +46,3 @@ parameters:
   direction: '<>'
   dst_port_end: -1
   dst_port_start: -1
-#bootstrapping URL
-  bts_url: 'http://10.193.86.75/bts.tgz'
