@@ -1,10 +1,14 @@
+# Heat Template to deploy VM-Series in Contrail service Chain
+
 - This is an OpenStack heat template that deploys Palo Alto Networks PA-VM in a service chain as per the following diagram.
+
 ![Topology](https://raw.githubusercontent.com/mohanadelamin/service-chaining-l3/master/other/topology.png)
 
 - The template deploy all the component in the blue box plus the related configuration for the traffic steering on contrail side (i.e. Service Template, Service Instance, and policy)
 - This template is based on Palo Alto Networks official [openstack templates](https://github.com/PaloAltoNetworks/openstack-templates)
 - In this template, the PA-VM will contact Panorama management server for the configuration after the bootstrapping. If Panorama is not needed in the setup, then modify the bootstrapping package. (Check step 2 below for more information)
 - The bootstrapping package is pushed to the PA-VM via user-data and not through Personality file injection.
+- This is tested using Mirantis Mitaka OpenStack and Juniper Contrail version 3.2.11.
 
 ## Usage:
 1. Modify the environment yaml file (service_chaining_env_l3.yaml) with your information (i.e. web and DB image, VM names, and IP subnets).
