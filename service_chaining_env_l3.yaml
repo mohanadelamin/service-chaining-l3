@@ -7,9 +7,9 @@ parameters:
   right_vnet_fqdn: 'default-domain:admin:DB_net'
   route_target: "target:64512:20000"
 # VM config  
-  flavor: ' m1.tiny'
-  left_vm_image: ' CirrOS-0.4.0'
-  right_vm_image: ' CirrOS-0.4.0' 
+  flavor: 'm1.tiny'
+  left_vm_image: 'CirrOS-0.4.0'
+  right_vm_image: 'CirrOS-0.4.0' 
   service_vm_name: 'PAN_NGFW_SVM_L3'
   left_vm_name: 'WEB_VM_L3'
   right_vm_name: 'DB_VM_L3'

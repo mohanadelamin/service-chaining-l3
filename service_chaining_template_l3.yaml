@@ -1,4 +1,4 @@
-heat_template_version: 2015-04-30
+heat_template_version: 2016-04-08
 
 parameters:
   mgmt_vnet:
@@ -371,7 +371,7 @@ resources:
       user_data_format: RAW
       config_drive: true
       user_data:
-        get_file: http://10.193.86.6/bts.tgz
+        get_file: http://10.193.86.75/bts.tgz
   
 
   left_VM_VirtualMachineInterface:
@@ -411,29 +411,28 @@ resources:
     properties:
       name: { get_param: policy_name }
       network_policy_entries: { network_policy_entries_policy_rule: [{ 
-		network_policy_entries_policy_rule_direction: { get_param: direction },
-		network_policy_entries_policy_rule_protocol: { get_param: protocol },
-		network_policy_entries_policy_rule_src_ports: [{
-			network_policy_entries_policy_rule_src_ports_start_port: { get_param: src_port_start },
-			network_policy_entries_policy_rule_src_ports_end_port: { get_param: src_port_end }
-								}],
- 		network_policy_entries_policy_rule_dst_ports: [{
-			network_policy_entries_policy_rule_dst_ports_start_port: { get_param: dst_port_start },
-			network_policy_entries_policy_rule_dst_ports_end_port: { get_param: dst_port_end }
-								}],
-		network_policy_entries_policy_rule_dst_addresses: [{
-			network_policy_entries_policy_rule_dst_addresses_virtual_network: { get_param: right_vnet_fqdn }
-								}],
-		network_policy_entries_policy_rule_src_addresses: [{
-			network_policy_entries_policy_rule_src_addresses_virtual_network: { get_param: left_vnet_fqdn }
-								}],
-		network_policy_entries_policy_rule_action_list: { 
-			network_policy_entries_policy_rule_action_list_simple_action: { get_param: simple_action },
-			network_policy_entries_policy_rule_action_list_apply_service: 
-									[{ get_param: SI_fqdn_name }]
-								},
-									}]
-	}
+        network_policy_entries_policy_rule_direction: { get_param: direction },
+        network_policy_entries_policy_rule_protocol: { get_param: protocol },
+      network_policy_entries_policy_rule_src_ports: [{
+        network_policy_entries_policy_rule_src_ports_start_port: { get_param: src_port_start },
+        network_policy_entries_policy_rule_src_ports_end_port: { get_param: src_port_end }
+      }],
+      network_policy_entries_policy_rule_dst_ports: [{
+        network_policy_entries_policy_rule_dst_ports_start_port: { get_param: dst_port_start },
+        network_policy_entries_policy_rule_dst_ports_end_port: { get_param: dst_port_end }
+      }],
+      network_policy_entries_policy_rule_dst_addresses: [{
+        network_policy_entries_policy_rule_dst_addresses_virtual_network: { get_param: right_vnet_fqdn }
+      }],
+      network_policy_entries_policy_rule_src_addresses: [{
+        network_policy_entries_policy_rule_src_addresses_virtual_network: { get_param: left_vnet_fqdn }
+      }],
+      network_policy_entries_policy_rule_action_list: { 
+        network_policy_entries_policy_rule_action_list_simple_action: { get_param: simple_action },
+        network_policy_entries_policy_rule_action_list_apply_service: [{ get_param: SI_fqdn_name }]
+     },
+   }]
+ }
 outputs:
   Pan_NGFW_Svm_instance_name:
     description: Name of the PAN Sevice instance
