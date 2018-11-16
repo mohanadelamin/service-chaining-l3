@@ -1,0 +1,48 @@
+parameters:
+# Virtual Network Config
+  mgmt_vnet: 'Management_net'
+  left_vnet: 'WEB_net'
+  right_vnet: 'DB_net'
+  left_vnet_fqdn: 'default-domain:admin:WEB_net'
+  right_vnet_fqdn: 'default-domain:admin:DB_net'
+  route_target: "target:64512:20000"
+# VM config  
+  flavor: ' m1.tiny'
+  left_vm_image: ' CirrOS-0.4.0'
+  right_vm_image: ' CirrOS-0.4.0' 
+  service_vm_name: 'PAN_NGFW_SVM_L3'
+  left_vm_name: 'WEB_VM_L3'
+  right_vm_name: 'DB_VM_L3'
+  port_tuple_name: 'port_tuple_L3'
+#Service Template Config 
+  ST_name: PAN_NGFW_SVM_template_L3
+  ST_version: 2
+  ST_service_mode: 'in-network'
+  ST_service_type: 'firewall'
+  ST_image_name: 'PA-VM-KVM-8.1.3'
+  ST_flavor: 'vm-100'
+  ST_interface_type_mgmt: 'management'
+  ST_interface_type_left: 'left'
+  ST_interface_type_right: 'right'
+  domain: 'default-domain'
+#Service Instance Config    
+  SI_name: PAN_NGFW_SVM_Instance_L3
+  SI_fqdn_name: 'default-domain:admin:PAN_NGFW_SVM_Instance_L3'
+#IPAM Config
+  IPAM_ip_prefix_mgmt: '172.16.200.0'
+  IPAM_ip_prefix_len_mgmt: 24
+  IPAM_ip_prefix_left: '172.16.201.0'
+  IPAM_ip_prefix_len_left: 24
+  IPAM_ip_prefix_right: '172.16.202.0'
+  IPAM_ip_prefix_len_right: 24
+  IPAM_addr_from_start_true: true
+#Policy Config  
+  policy_name: 'PAN_NGFW_SVM_policy-L3'
+  policy_fqdn_name: 'default-domain:admin:PAN_NGFW_SVM_policy-L3'
+  simple_action: 'pass'
+  protocol: 'any'
+  src_port_end: -1
+  src_port_start: -1
+  direction: '<>'
+  dst_port_end: -1
+  dst_port_start: -1
